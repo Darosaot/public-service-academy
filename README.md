@@ -1,1 +1,45 @@
-# public-service-academy
+# Public Service Academy
+
+Short, scored missions on public administration functions, for training and assessing
+consultants. Built from the engine and content of
+[Public Service Story](https://github.com/Darosaot/publicadmin) (imported from `b524760`), set in
+the same fictional EU member state, Valmara.
+
+You play a public official. Each mission is a briefing and a handful of decisions; the debrief
+shows how an expert would grade each one, why, and which EU rule applies. **The story can be
+unlucky, the score never is**: scoring reads only your decisions, deterministically.
+
+The full design and roadmap are in [`docs/plan.md`](docs/plan.md). This is **Phase 0**: the
+monorepo, the engine core, one hello mission and CI.
+
+## Layout
+
+| Path | What |
+| --- | --- |
+| `packages/engine` | Pure TypeScript: seeded RNG, mission runner, replay, scoring. No React, no DOM. |
+| `packages/content` | Missions, competencies, EU-law references, validation. Keys are authored next to the prose and split out by `defineMission`. |
+| `apps/web` | React + Vite player and debrief. |
+| `tests/e2e` | Playwright smoke test against the production build. |
+
+## Running it
+
+```bash
+npm install
+npm run dev         # dev server
+npm run typecheck   # TypeScript, strict
+npm test            # engine, scoring guardrails, content validation
+npm run test:e2e    # Playwright smoke test
+```
+
+Add `?seed=42` to the URL to fix the choice order.
+
+## Deployment
+
+Netlify builds `main` to production and every pull request to a deploy preview
+(`netlify.toml`: `npm run build` -> `apps/web/dist`).
+
+## Answer keys
+
+In Phase 0 the hello mission's keys ship to the browser so the debrief works without a backend.
+From Phase 2 keys live only in server functions, and CI fails if key text reaches the web
+bundle. Keep this repository private: the keys are in the source.
