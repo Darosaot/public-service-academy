@@ -4,6 +4,11 @@
  * Prose adapted from darosaot/publicadmin@b524760, `evt.procurement.committee_pressure` and
  * `evt.procurement.shared_address`. The keys are a DRAFT pending SME review; they will be
  * reworked into mission P2 ("Six bids, four evaluators") in Phase 1.
+ *
+ * Graded against Directive 2014/24/EU as transposed by the LCSP. Where the two differ the
+ * stricter national rule decides the grade: LCSP art. 150.1 makes referral to the competition
+ * authority the required route for well-founded collusion signs in a harmonised contract, so
+ * excluding the two bidders on your own, which the Directive would allow, grades weak here.
  */
 
 import { defineMission } from '../authoring';
@@ -11,7 +16,7 @@ import { defineMission } from '../authoring';
 export const hello = defineMission('m.hello', {
   title: 'Two problems before Friday',
   briefing:
-    'You are the procurement officer at Northbridge City Council, running a four-hundred-thousand-euro services tender. The evaluation committee meets this week and the award is due on Friday.',
+    'You are the procurement officer at Northbridge City Council, running a four-hundred-thousand-euro services tender, above the EU threshold and so a harmonised contract. The evaluation committee meets this week and the award is due on Friday.',
   estMinutes: 5,
   steps: [
     {
@@ -25,14 +30,14 @@ export const hello = defineMission('m.hello', {
           id: 'suspend',
           label: 'Suspend the procedure and refer it',
           outcome:
-            'You stop the tender and report suspected collusion to the competition authority. The works are delayed a year; two people you will never meet are eventually fined.',
+            'You send a detailed note and the whole file, every bid included, to the competition authority. The tender is suspended the same day; the bidders are not told why. Three weeks later the report comes back: the indications are well founded.',
           meters: { integrity: 6, politicalCapital: -5, stress: 8 },
           key: {
             grade: 'best',
             points: { risk: 3, procurement: 2 },
             rationale:
-              'A shared address plus near-identical bids is a classic collusion indicator. Pausing, documenting and referring protects the procedure and lets a competent authority establish the facts.',
-            refs: ['dir2014_24.art57_4_d', 'dir2014_24.art18'],
+              'A shared address plus near-identical bids is a classic collusion indicator. In a harmonised contract the LCSP makes this the required route: before award, refer the well-founded signs to the CNMC (or the regional authority) with a reasoned explanation and the full file. The referral suspends the tender, and the bidders are not notified. The Directive would also let you exclude, but national law asks for the competent authority first.',
+            refs: ['dir2014_24.art57_4_d', 'lcsp.150', 'lcsp.132'],
           },
         },
         {
@@ -42,11 +47,11 @@ export const hello = defineMission('m.hello', {
             'Quick, and the third bid is nine per cent more expensive. Nobody investigates the other two, who bid again next year.',
           meters: { integrity: 3, stress: 4 },
           key: {
-            grade: 'acceptable',
-            points: { risk: 2, procurement: 1 },
+            grade: 'weak',
+            points: { risk: 1 },
             rationale:
-              'Exclusion is available where there are sufficiently plausible indications of collusion, but the bidders should be heard and the reasons documented. Without a referral the pattern continues elsewhere.',
-            refs: ['dir2014_24.art57_4_d'],
+              'You acted on the red flag, which matters, and the Directive does allow exclusion on sufficiently plausible indications. But the LCSP requires referral to the competition authority before award in a harmonised contract, and requires any sign of collusion to be reported. Excluding on your own skips the body able to establish the facts, invites a challenge from the excluded bidders, and leaves the pattern free to continue elsewhere.',
+            refs: ['dir2014_24.art57_4_d', 'lcsp.150', 'lcsp.132'],
           },
         },
         {
@@ -59,8 +64,8 @@ export const hello = defineMission('m.hello', {
             grade: 'critical',
             points: {},
             rationale:
-              'Recording a red flag and then ignoring it is the worst of both: the risk stays, and the file now proves you knew.',
-            refs: ['dir2014_24.art18'],
+              'Recording a red flag and then ignoring it is the worst of both: the risk stays, and the file now proves you knew. Authorities must safeguard free competition throughout the procedure and report any sign of collusion.',
+            refs: ['dir2014_24.art18', 'lcsp.132'],
           },
         },
       ],
@@ -82,8 +87,8 @@ export const hello = defineMission('m.hello', {
             grade: 'best',
             points: { integrity: 3, procurement: 2 },
             rationale:
-              'A possible conflict must be declared and managed before the evaluation continues. Asking the whole committee keeps it procedural rather than personal.',
-            refs: ['dir2014_24.art24'],
+              'A possible conflict must be declared and managed before the evaluation continues. Under the LCSP anyone who knows of a possible conflict must report it immediately to the contracting authority, and you do. Asking the whole committee keeps it procedural rather than personal.',
+            refs: ['dir2014_24.art24', 'lcsp.64'],
           },
         },
         {
@@ -96,8 +101,8 @@ export const hello = defineMission('m.hello', {
             grade: 'acceptable',
             points: { integrity: 1, procurement: 1 },
             rationale:
-              'Good record-keeping, but the conflict itself is never declared or managed, so the evaluation remains exposed to challenge.',
-            refs: ['dir2014_24.art24'],
+              'Good record-keeping, but the conflict itself is never declared or managed, and you knew of it: the LCSP expects you to report it, not only to minute around it. The evaluation stays exposed to challenge.',
+            refs: ['dir2014_24.art24', 'lcsp.64'],
           },
         },
         {
@@ -110,8 +115,8 @@ export const hello = defineMission('m.hello', {
             grade: 'critical',
             points: {},
             rationale:
-              'Re-scoring under the influence of an undeclared conflict breaches equal treatment and invites annulment.',
-            refs: ['dir2014_24.art24', 'dir2014_24.art18'],
+              'Re-scoring under the influence of an undeclared conflict breaches equal treatment and the duty to prevent and resolve conflicts of interest, and invites annulment.',
+            refs: ['dir2014_24.art24', 'lcsp.64', 'dir2014_24.art18', 'lcsp.132'],
           },
         },
       ],

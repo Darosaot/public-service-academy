@@ -71,8 +71,57 @@ h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
 .grade--best { color: var(--c-good); }
 .grade--acceptable, .grade--weak { color: var(--c-accent); }
 .grade--critical { color: var(--c-bad); }
-.refs { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.9rem; }
-.refs a { color: var(--c-brand); }
+
+/* Navigation */
+.nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem;
+  padding: 0.6rem 1rem; border-bottom: 1px solid var(--c-border); background: var(--c-surface);
+}
+.nav__brand { font-weight: 700; margin-right: auto; }
+.nav__tab {
+  font: inherit; background: none; border: none; color: var(--c-muted); cursor: pointer;
+  padding: 0.3rem 0; border-bottom: 3px solid transparent;
+}
+.nav__tab[aria-current='page'] { color: var(--c-text); border-bottom-color: var(--c-brand); }
+
+/* Law references */
+.lawrefs { display: grid; gap: 0.6rem; margin-top: 0.8rem; }
+.lawrefs__label {
+  margin: 0 0 0.2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--c-muted);
+}
+.lawrefs__stages { margin: 0; font-size: 0.9rem; color: var(--c-muted); }
+.lawlink { display: block; color: var(--c-brand); text-decoration: none; margin: 0.15rem 0; }
+.lawlink:hover .lawlink__cite, .lawlink:focus-visible .lawlink__cite { text-decoration: underline; }
+.lawlink__cite { font-weight: 600; margin-right: 0.4rem; }
+.lawlink__heading { color: var(--c-text); font-size: 0.92rem; }
+.linkbtn {
+  font: inherit; background: none; border: none; padding: 0; color: var(--c-brand);
+  text-decoration: underline; cursor: pointer;
+}
+
+/* Knowledge screen */
+.page--wide { max-width: 64rem; }
+.sources { padding-left: 1.1rem; }
+.sources a { color: var(--c-brand); }
+.stage { border-top: 2px solid var(--c-border); padding: 1rem 0 0.4rem; scroll-margin-top: 1rem; }
+.stage--focus { border-top-color: var(--c-accent); }
+.stage--focus h3 { color: var(--c-accent); }
+.stage__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.article { background: var(--c-surface); border: 1px solid var(--c-border); padding: 0.7rem 0.8rem; margin-bottom: 0.6rem; }
+.article__summary { margin: 0.4rem 0 0; font-size: 0.93rem; }
+.article__cited { margin: 0.4rem 0 0; font-size: 0.85rem; color: var(--c-muted); }
+.tablewrap { overflow-x: auto; }
+.concordance { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.concordance th, .concordance td {
+  border: 1px solid var(--c-border); padding: 0.5rem; text-align: left; vertical-align: top;
+}
+.concordance a { color: var(--c-brand); font-weight: 600; }
+
+@media (max-width: 40rem) {
+  .stage__cols { grid-template-columns: 1fr; }
+  .nav__brand { flex-basis: 100%; }
+}
 
 @media (max-width: 30rem) {
   .bars li { grid-template-columns: 1fr 4rem 3rem; }
