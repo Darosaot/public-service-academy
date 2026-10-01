@@ -1,5 +1,5 @@
 /**
- * The mission player: briefing -> steps -> debrief, for the hello mission.
+ * The mission player: briefing -> steps -> debrief.
  *
  * PHASE 0 ONLY: the keys are imported into the browser here so the debrief can be shown
  * without a backend. Phase 2 moves scoring and keys into Netlify Functions and adds a bundle
