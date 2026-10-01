@@ -16,7 +16,7 @@ manager dashboard. **`darosaot/publicadmin` is not modified** and stays live.
 | --- | --- |
 | Purpose | Practice + assessment: practice with instant feedback; assessment campaigns with results for managers |
 | Player role | Public official, deciding from inside the administration (as in the current game) |
-| Legal frame | Fictional Valmara as an EU member state; debriefs cite EU law (directives, CPR) with EUR-Lex links, and principles where EU law is silent |
+| Legal frame | Fictional Valmara as an EU member state; every graded decision cites the EU Directive article **and its Spanish transposition in Ley 9/2017 (LCSP)**, deep-linked to EUR-Lex and the BOE; where they differ, the stricter national rule decides the grade. Principles where both are silent |
 | MVP functions | Procurement and contracts; budget, finance and EU funds |
 
 ---

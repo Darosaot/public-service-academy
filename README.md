@@ -9,6 +9,13 @@ You play a public official. Each mission is a briefing and a handful of decision
 shows how an expert would grade each one, why, and which EU rule applies. **The story can be
 unlucky, the score never is**: scoring reads only your decisions, deterministically.
 
+**The law behind every grade.** Each graded choice cites the rule in
+[Directive 2014/24/EU](https://eur-lex.europa.eu/eli/dir/2014/24/oj/eng) and how Spain transposes
+it in [Ley 9/2017 (LCSP)](https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902), linked to the
+article. Validation fails the build if a Directive citation lacks its LCSP counterpart. The
+**Legislation & process** view walks an open procedure stage by stage with both texts side by
+side, plus a Directive-to-LCSP concordance (`packages/content/src/law/`).
+
 The full design and roadmap are in [`docs/plan.md`](docs/plan.md). This is **Phase 0**: the
 monorepo, the engine core, one hello mission and CI.
 
