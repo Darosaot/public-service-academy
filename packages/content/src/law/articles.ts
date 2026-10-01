@@ -98,6 +98,8 @@ export const articleList: LegalArticle[] = [
     'Sets the principles of free access, publicity and transparency, non-discrimination and equal treatment, and efficient use of public funds.'),
   es('28', 'a2-10', 'Necesidad e idoneidad del contrato y eficiencia en la contratación.', 'Need for and suitability of the contract',
     'Only contracts necessary for the body\'s purposes may be concluded, and the need must be documented in the file before starting.'),
+  es('39', 'a3-11', 'Causas de nulidad de derecho administrativo.', 'Grounds of nullity under administrative law',
+    'Among the grounds: signing before the standstill period ends, where that took away a bidder\'s chance to appeal and an infringement also cost them the award.'),
   es('63', 'a6-5', 'Perfil de contratante.', 'Buyer profile',
     'What must be published on the buyer profile, including the file, specifications, committee members and award reports.'),
   es('64', 'a6-6', 'Lucha contra la corrupción y prevención de los conflictos de intereses.', 'Fighting corruption and preventing conflicts of interest',

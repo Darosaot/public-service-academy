@@ -16,8 +16,9 @@ article. Validation fails the build if a Directive citation lacks its LCSP count
 **Legislation & process** view walks an open procedure stage by stage with both texts side by
 side, plus a Directive-to-LCSP concordance (`packages/content/src/law/`).
 
-The full design and roadmap are in [`docs/plan.md`](docs/plan.md). This is **Phase 0**: the
-monorepo, the engine core, one hello mission and CI.
+The full design and roadmap are in [`docs/plan.md`](docs/plan.md). Current content: mission
+**P2, "Six bids, four evaluators"** (evaluation and award of a harmonised tender), with draft
+answer keys pending SME review.
 
 ## Layout
 

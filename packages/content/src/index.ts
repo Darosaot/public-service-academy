@@ -1,12 +1,12 @@
 import type { AuthoredMission } from './authoring';
-import { hello } from './missions/hello';
+import { p2 } from './missions/p2';
 
 export { defineMission, type AuthoredMission } from './authoring';
 export { competencies, type Competency } from './competencies';
 export * from './law';
 export { validateLaw, validateMissions } from './validate';
 
-export const missions: readonly AuthoredMission[] = [hello];
+export const missions: readonly AuthoredMission[] = [p2];
 
 export interface Citation {
   missionId: string;

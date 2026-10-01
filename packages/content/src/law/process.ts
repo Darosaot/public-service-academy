@@ -78,7 +78,7 @@ export const procurementProcess: ProcessStage[] = [
     title: '7. Standstill and signature',
     summary:
       'Where a special appeal is possible, wait fifteen working days after notifying the award before signing. Signing early is how an award becomes an annulment.',
-    articles: ['lcsp.153'],
+    articles: ['lcsp.153', 'lcsp.39'],
   },
   {
     id: 'execution',

@@ -1,18 +1,23 @@
 import { expect, test } from '@playwright/test';
 
-test('plays the hello mission from briefing to debrief, with the law behind each grade', async ({
+test('plays mission P2 from briefing to debrief, with the law behind each grade', async ({
   page,
 }) => {
   await page.goto('/?seed=42');
   await page.getByRole('button', { name: 'Start the mission' }).click();
 
-  // Step 1: the best answer, wherever the shuffle put it.
-  await page.getByRole('button', { name: 'Suspend the procedure and refer it' }).click();
-  await page.getByRole('button', { name: 'Continue' }).click();
-
-  // Step 2: a merely acceptable answer, so the debrief has something to explain.
-  await page.getByRole('button', { name: 'Record his arguments in the minutes verbatim' }).click();
-  await page.getByRole('button', { name: 'Continue' }).click();
+  // One acceptable answer first, so the debrief has something to explain; then best answers,
+  // wherever the shuffle put them.
+  for (const label of [
+    'Record his arguments in the minutes verbatim',
+    'Score only against the published criteria and weights, with written reasons per bid',
+    'Suspend the procedure and refer it',
+    'Ask the bidder to justify and break down its price, then get a technical report on the answer',
+    'Notify a reasoned award with the score breakdown, publish it, and sign after fifteen working days',
+  ]) {
+    await page.getByRole('button', { name: label }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+  }
 
   await expect(page.getByText('Debrief')).toBeVisible();
   await expect(page.getByText(/Preferred: Ask everyone to restate/)).toBeVisible();
@@ -37,7 +42,7 @@ test('plays the hello mission from briefing to debrief, with the law behind each
     .click();
   await expect(page.getByRole('heading', { name: 'Public procurement, stage by stage' })).toBeVisible();
   await expect(page.locator('#stage-award')).toHaveClass(/stage--focus/);
-  await expect(page.locator('#stage-award')).toContainText('Two problems before Friday');
+  await expect(page.locator('#stage-award')).toContainText('Six bids, four evaluators');
 
   // The mission is still there when you go back.
   await page.getByRole('button', { name: 'Mission' }).click();

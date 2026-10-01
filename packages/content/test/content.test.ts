@@ -116,8 +116,28 @@ describe('content', () => {
 
   it('tells the knowledge page which steps cite an article, never which answer is right', () => {
     const cites = citationsByArticle();
-    expect(cites['lcsp.150']?.map((c) => c.stepId)).toEqual(['m.hello.address']);
-    expect(cites['lcsp.64']?.map((c) => c.stepId)).toEqual(['m.hello.committee']);
+    expect(cites['lcsp.150']?.map((c) => c.stepId)).toEqual(['m.p2.address']);
+    expect(cites['lcsp.64']?.map((c) => c.stepId)).toEqual(['m.p2.conflict']);
     expect(JSON.stringify(cites)).not.toMatch(/grade|best|critical|rationale/);
+  });
+
+  it('caps a corner-cutting run through P2 at one star, with every shortcut flagged', () => {
+    const { mission, keys } = missions.find((m) => m.mission.id === 'm.p2')!;
+    const cutter = [
+      ['m.p2.conflict', 'concede'],
+      ['m.p2.criteria', 'proposer'],
+      ['m.p2.address', 'proceed'],
+      ['m.p2.low', 'accept'],
+      ['m.p2.standstill', 'sign'],
+    ].map(([stepId, choiceId]) => ({ stepId: stepId!, choiceId: choiceId! }));
+    replay(mission, 3, cutter);
+    const result = scoreAttempt(mission, keys, cutter);
+    expect(result.stars).toBe(1);
+    expect(result.total).toBe(0);
+    expect(result.redFlags.map((f) => f.stepId)).toEqual([
+      'm.p2.conflict',
+      'm.p2.address',
+      'm.p2.standstill',
+    ]);
   });
 });
